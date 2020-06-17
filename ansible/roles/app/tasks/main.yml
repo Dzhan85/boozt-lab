@@ -1,0 +1,17 @@
+---
+# tasks file for app
+- name: Setup app
+  become: yes
+  tags:
+    - app
+  block:
+    - name: Ensure webapp directory exists
+      file:
+        path: /var/www/html
+        state: directory
+
+    - name: Sync application code
+      synchronize:
+        src: ../../../app/
+        dest: /var/www/html/
+...

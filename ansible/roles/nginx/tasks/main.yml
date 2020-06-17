@@ -1,0 +1,37 @@
+---
+# tasks file for nginx
+- name: Setup nginx
+  become: yes
+  tags:
+    - nginx
+  block:
+    - name: Install nginx
+      dnf:
+        name: nginx
+        state: present
+    - name: Enable nginx on boot
+      systemd:
+        name: nginx
+        enabled: yes
+    - name: Remove all nginx listen directives
+      lineinfile:
+        path: /etc/nginx/nginx.conf
+        regexp: '^\ +listen.+80 default_server;$'
+        state: absent
+    - name: Setup nginx to listen on custom port
+      lineinfile:
+        path: /etc/nginx/nginx.conf
+        insertafter: '^\ {4}server \{$'
+        line: "        listen       \
+          127.0.0.1:{{ local_ports.nginx }} default_server;"
+      notify: restart nginx
+    - name: Setup nginx to use custom webapp root
+      lineinfile:
+        path: /etc/nginx/nginx.conf
+        regexp: '^\ +root\ +/usr/share/nginx/html;'
+        line: "        root         /var/www/html;"
+      notify: reload nginx
+    - name: Start nginx
+      systemd:
+        name: nginx
+        state: started

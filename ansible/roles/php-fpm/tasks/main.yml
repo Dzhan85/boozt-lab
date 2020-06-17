@@ -1,0 +1,19 @@
+---
+# tasks file for php-fpm
+- name: Setup php-fpm
+  become: yes
+  tags:
+    - php-fpm
+  block:
+    - name: Install php-fpm
+      dnf:
+        name: php-fpm
+        state: present
+    - name: Enable php-fpm on boot
+      systemd:
+        name: php-fpm
+        enabled: yes
+    - name: Start php-fpm
+      systemd:
+        name: php-fpm
+        state: started

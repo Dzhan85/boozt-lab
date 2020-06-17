@@ -1,0 +1,34 @@
+---
+# tasks file for apache-httpd
+- name: Setup apache-httpd
+  become: yes
+  tags:
+    - apache-httpd
+  block:
+    - name: Install apache-httpd
+      dnf:
+        name:
+          - httpd
+          - python3-policycoreutils
+        state: present
+    - name: Enable apache-httpd on boot
+      systemd:
+        name: httpd
+        enabled: yes
+    - name: Allow Apache to listen on custom tcp port
+      seport:
+        ports: "{{ local_ports.apache_httpd }}"
+        proto: tcp
+        setype: http_port_t
+        state: present
+    - name: Setup apache-httpd config
+      lineinfile:
+        path: /etc/httpd/conf/httpd.conf
+        regexp: '^Listen '
+        line: "Listen 127.0.0.1:{{ local_ports.apache_httpd }}"
+      notify: restart apache-httpd
+    - name: Start apache-httpd
+      systemd:
+        name: httpd
+        state: started
+...

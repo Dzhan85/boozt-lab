@@ -1,0 +1,16 @@
+---
+- name: boozt
+  hosts: localhost
+  # we don't use facts in playbooks/roles; speedup run a little bit
+  gather_facts: false
+  vars:
+    local_ports:
+      apache_httpd: 82
+      nginx: 81
+  roles:
+    - haproxy
+    - php-fpm
+    - apache-httpd
+    - nginx
+    - app
+...
