@@ -20,7 +20,7 @@ bring up one CentOS 8 virtual machine:
 .
 |-- ansible/
 |-- app/
-|-- bootstrap.sh
+|-- bootstrap.sh*
 |-- LICENSE
 |-- README.md
 `-- Vagrantfile

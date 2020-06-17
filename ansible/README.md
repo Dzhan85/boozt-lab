@@ -52,7 +52,8 @@ ansible/
 |       `-- tasks/
 |           `-- main.yml
 |-- deploy-app.yml
-`-- inventory.txt
+|-- inventory.txt
+`-- README.md
 ```
 
 ## Customization
