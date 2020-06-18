@@ -1,0 +1,27 @@
+---
+name: CI
+on: [push, pull_request]
+
+jobs:
+  lint:
+    name: Linting job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Install linters
+        run: |
+          sudo apt-get update && \
+          sudo apt-get install -y python3-setuptools && \
+          sudo pip3 install ansible-lint && \
+          sudo npm install markdownlint-cli -g
+      - name: Show Ansible linter version
+        run: ansible-lint --version
+      - name: Show Markdown linter version
+        run: markdownlint --version
+      - name: Run Ansible linter
+        run: ansible-lint -v ansible/deploy-app.yml
+      - name: Run Markdown linter
+        run: find . -name "*.md" -type f | xargs markdownlint -rt
+
+...
