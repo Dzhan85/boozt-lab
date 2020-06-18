@@ -64,7 +64,7 @@ following [roles](ansible/roles/) onto a VM:
 6. The URL [http://192.168.100.101](http://192.168.100.101) being opened from the
    host machine would show balanced PHP application.
 
-7. Operation system on the VM is CentOS 8.
+7. Operating system on the VM is CentOS 8.
 
 8. Exercise uses Vagrant to bring up whole environment by running `vagrant up`
    command.

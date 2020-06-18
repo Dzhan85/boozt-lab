@@ -9,9 +9,14 @@
       file:
         path: /var/www/html
         state: directory
-
+    - name: Ensure rsync is installed for synchronize ansible module
+      dnf:
+        name: rsync
+        state: present
     - name: Sync application code
       synchronize:
         src: ../../../app/
         dest: /var/www/html/
+        delete: yes
+        recursive: yes
 ...
