@@ -1,5 +1,7 @@
 # Boozt lab
 
+![CI-linting](https://github.com/gorshunovr/boozt-lab/workflows/CI-linting/badge.svg?branch=master)
+
 ## Environment
 
 Environment is expected to be launched via `vagrant up` command. Vagrant would

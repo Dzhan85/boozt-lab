@@ -1,5 +1,5 @@
 ---
-name: CI
+name: CI-linting
 on: [push, pull_request]
 
 jobs:
@@ -22,6 +22,6 @@ jobs:
       - name: Run Ansible linter
         run: ansible-lint -v ansible/deploy-app.yml
       - name: Run Markdown linter
-        run: find . -name "*.md" -type f | xargs markdownlint -rt
+        run: find . -name "*.md" -type f | xargs -rt markdownlint
 
 ...
