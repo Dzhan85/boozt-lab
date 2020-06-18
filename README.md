@@ -48,25 +48,25 @@ following [roles](ansible/roles/) onto a VM:
 1. Installable souce code in this repository allows to bootstrap environment by
    running simple `vagrant up` command.
 
-2. Source code of the application `app` is in [app/](app/) subdirectory, and is
+1. Source code of the application `app` is in [app/](app/) subdirectory, and is
    being synced by Ansible to `/var/www/html/` on the `n0` VM. Application simply
    prints phpinfo().
 
-3. HAProxy load balancer listens on `*:80` and passes traffic to two backends:
+1. HAProxy load balancer listens on `*:80` and passes traffic to two backends:
    `127.0.0.1:81` and `127.0.0.1:82`.
 
-4. Nginx listens on `127.0.0.1:81` and serves `/var/www/html/index.php` PHP
+1. Nginx listens on `127.0.0.1:81` and serves `/var/www/html/index.php` PHP
    application.
 
-5. Apache httpd listens on `127.0.0.1:82` and serves same
+1. Apache httpd listens on `127.0.0.1:82` and serves same
    `/var/www/html/index.php` PHP application.
 
-6. The URL [http://192.168.100.101](http://192.168.100.101) being opened from the
+1. The URL [http://192.168.100.101](http://192.168.100.101) being opened from the
    host machine would show balanced PHP application.
 
-7. Operating system on the VM is CentOS 8.
+1. Operating system on the VM is CentOS 8.
 
-8. Exercise uses Vagrant to bring up whole environment by running `vagrant up`
+1. Exercise uses Vagrant to bring up whole environment by running `vagrant up`
    command.
 
    Although VirtualBox has been recommended to be used as a virtualization
@@ -74,7 +74,7 @@ following [roles](ansible/roles/) onto a VM:
    reasonable efforts have been made to ensure that environment would also work
    on VirtualBox.
 
-9. SELinux remains enabled.
+1. SELinux remains enabled.
 
 ## Conventions
 

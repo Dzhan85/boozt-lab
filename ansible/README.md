@@ -1,7 +1,7 @@
 # Ansible
 
 > **NOTE:** Inventory `inventory.txt` refers only to this local node (*n0*) via
-  `local` connection driver.
+> `local` connection driver.
 
 The `deploy-app.yml` playbook performs the following actions in order by applying
 respective roles:
@@ -58,8 +58,9 @@ ansible/
 
 ## Customization
 
-The `apache-httpd`, `nginx` and `haproxy` roles accept variables for port numbers. See
-[deploy-app.yml](deploy-app.yml) and respective `{role}/defaults/main.yml` files.
+The `apache-httpd`, `nginx` and `haproxy` roles accept variables for port
+numbers. See [deploy-app.yml](deploy-app.yml) and respective
+`{role}/defaults/main.yml` files.
 
 ## Conventions
 
